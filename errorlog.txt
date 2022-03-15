@@ -1,0 +1,51 @@
+Unable to log out so used a unset function to log out manually
+
+Log out php did not actually log out the user, only redirected them to the login page.
+Tried a fix: putting the unset function into a loop which checks to see if the user data isn't null
+However this still didn't work
+Eventually realised there was no session start function and after adding this the code worked as intended.
+
+After creating the Post class an error presented itself saying the newly made class wasn't found in profile.php .
+The error was because the classes/post.php file was not included at the start of the the profile.php file. After writing code to include, the page worked as intended.
+
+Once a post was created, if you try to refresh the page and accept the Confirm Form Resubmission prompt, another post with the exact same caption will be uploaded to the database.
+This is a usability error which I needed to fix.
+Code was written to make sure that once the post was sent to the database, the page was killed and the user redirected to the profile.php page.
+
+While implementing code to display the posts on the profile page an error showed that $posts was undefined. Using var_dump I found out a boolean value was being returned - this is not what we were wanting.
+Upon inspection of code I realised that the save function was being used in the classes/post.php doc and not the read function.
+After switching save to read the code worked as expected.
+
+When testing the mates section (box that displays other users) a massive error came up.
+After debugging it was found out that the include() function was linking to the post.php file instead of the user.php file.
+After fixing, the mates section worked as intended.
+
+
+make sure to link a reference for the user of imagecopyresampled() function
+
+https://www.quora.com/unanswered/What-is-the-best-way-to-resize-image-in-PHP
+https://www.w3schools.com/sql/sql_injection.asp
+
+
+Types of security measures implemented:
+
+SQL injection prevention:
+    variable escaping
+    html escaping
+    input whitelisting and blacklisting
+
+
+skipped episodes: 61, 63
+
+
+
+//This is a temporary fix for logging out until the button is implemented
+//unset($_SESSION['manoverseUserID']);
+
+//print_r($_SESSION['manoverseUserID']);
+//print_r($_SESSION);
+
+
+
+
+10 hours to go.
