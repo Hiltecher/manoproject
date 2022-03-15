@@ -1,5 +1,7 @@
 <?php
 
+//This is the user class representing manoverse users
+
 class User
 {
 
