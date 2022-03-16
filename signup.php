@@ -22,7 +22,7 @@
 
         if($result != ""){
 
-            echo "<div style='text-align:center; font-size: 16px; color: red;'>";
+            echo "<div style='text-align:center; font-size: 16px; color: black;'>";
             echo "oh snap! some problems cropped up: <br><br>";
             echo $result;
             echo "<div>";
@@ -123,8 +123,7 @@
         <div id='bar'>
 
             <div style='font-size: 40px;'>manoverse</div>
-            <div id='signup'>log in</div>
-
+            <a href='login.php'><div id='signup'>log in</div></a>
         </div>
 
         <div id='loginbox'>

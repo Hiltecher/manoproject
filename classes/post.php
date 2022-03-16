@@ -211,8 +211,8 @@ class Post
 		if(is_numeric($ID)){
  
 			//get like details.
-			$sql = "SELECT likes FROM likes WHERE type='$type' AND contentid = '$ID' LIMIT 1";
-			$result = $DB->read($sql);
+			$query = "SELECT likes FROM likes WHERE type='$type' AND contentid = '$ID' LIMIT 1";
+			$result = $DB->read($query);
 			if(is_array($result)){
 
 				$likes = json_decode($result[0]['likes'],true);

@@ -53,7 +53,7 @@
             }
         ?>
 
-        <a href='like.php?type=post&id=<?php echo $ROW['postID'] ?>'>like (<?php echo $likes ?>) </a> | <a href=''>comment</a> .
+        <a href='like.php?type=post&id=<?php echo $ROW['postID'] ?>'>like (<?php echo $likes ?>) </a> .
         
         <span style='color: #999'>
         

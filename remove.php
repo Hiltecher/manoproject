@@ -1,11 +1,22 @@
 <?php
 
     include("classes/autoloader.php");
-
-
+    
     $login = new Login();
     $userData = $login->checkLogin($_SESSION['manoverseUserID']); //checks to see if a user is logged in or not
-    $post = new Post();
+
+    $USER = $userData;
+
+    if(isset($_GET['id']) && is_numeric($_GET['id'])) //If ID in URL is a set value and is numeric run the if loop to display profile data.
+    {
+        $profile = new Profile();
+        $profileData = $profile->getProfile($_GET['id']);
+
+        if(is_array($profileData))
+        {$userData = $profileData[0];}
+    }
+
+    $post = new Post(); //instantiation of post class
     $error = "";
 
     if(isset($_GET['id']))

@@ -1,7 +1,7 @@
 <!--top bar-->
 <?php
 
-    $bannerPFP = "images/blue.png"; //placeholder profile picture
+    $bannerPFP = "images/mvm.png"; //placeholder profile picture
 
     if(isset($USER))
     {
@@ -28,9 +28,11 @@
 
     <div style='width: 800px; margin:auto; font-size: 30px;'>
 
-        <a href="index.php" style="color: white; text-decoration: none"> manoverse </a>
-        
-        &nbsp &nbsp <input type='text' id='search_box' placeholder='explore the manoverse'>
+        <form method='get' action='search.php'>
+
+            <a href="profile.php" style="color: white; text-decoration: none"> manoverse </a>
+
+            &nbsp &nbsp <input type='text' id='search_box' name='find' placeholder='explore the manoverse'>
 
         <a href="profile.php">
             <img src='<?php echo $bannerPFP ?>' style='width:50px; float:right;'>
@@ -41,6 +43,7 @@
         </a>
 
     </div>
+    </form>
 
     
 </div>

@@ -186,7 +186,7 @@
 
 
 
-        <!--cover area-->
+        <!--navigation area-->
         <?php include("header.php") ?>
         
         <br>
@@ -197,153 +197,102 @@
 
             <div style='background-color: white; text-align: center; color: #405d9b'>
 
-                <?php
+                    <?php
 
-                $image = "images/placeholderbanner.jpg";
-                if($userData['gender'] == 'female')
-                {$image = "images/placeholderbanner2.jpg";}
-
-                if(file_exists($userData['banner']))
-                {
-
-                    $image = $userData['banner'];
-
-                }
-
-                ?>
-            <img src="<?php echo $image ?>" style='width: 100%;'>
-
-            <span style="font-size: 12px;">
-
-                <?php
-
-                    $image = "images/mvm.png";
+                    $image = "images/placeholderbanner.jpg";
                     if($userData['gender'] == 'female')
-                    {$image = "images/mvf.png";}
+                    {$image = "images/placeholderbanner2.jpg";}
 
-                    if(file_exists($userData['pfp']))
+                    if(file_exists($userData['banner']))
                     {
 
-                        $image = $userData['pfp'];
+                        $image = $userData['banner'];
 
                     }
 
-                ?>
-                
-                <img id='pfp' src="<?php echo $image ?>"><br>
-                <a href="changepfp.php?change=pfp" style="text-decoration: none; color: #405d9b">change pfp</a> | 
-                <a href="changepfp.php?change=banner" style="text-decoration: none; color: #405d9b">change banner</a>
+                    ?>
+                <img src="<?php echo $image ?>" style='width: 100%;'>
 
-            </span>
-            <br>
+                <span style="font-size: 12px;">
 
-            <a href="profile.php?id=<?php $userData['userID']; ?>" style="text-decoration: none; color: #405d9b;">
-                <div style='font-size: 20px;'><?php echo $userData['firstName'] . ' ' . $userData['lastName']?>
-            </a>
+                    <?php
+
+                        $image = "images/mvm.png";
+                        if($userData['gender'] == 'female')
+                        {$image = "images/mvf.png";}
+
+                        if(file_exists($userData['pfp']))
+                        {
+
+                            $image = $userData['pfp'];
+
+                        }
+
+                    ?>
+                    
+                    <img id='pfp' src="<?php echo $image ?>"><br>
+                    <a href="changepfp.php?change=pfp" style="text-decoration: none; color: #405d9b">change pfp</a> | 
+                    <a href="changepfp.php?change=banner" style="text-decoration: none; color: #405d9b">change banner</a>
+
+                </span>
+                <br>
+
+                <a href="profile.php?id=<?php $userData['userID']; ?>" style="text-decoration: none; color: #405d9b;">
+                    <div style='font-size: 20px;'><?php echo $userData['firstName'] . ' ' . $userData['lastName']?>
+                </a>
+
+                    <br>
+                    <?php
+                        $myFollowers = "";
+                        if($userData['likes'] > 0)
+                        {
+                            $myFollowers = "(" . $userData['likes'] . ")";
+                        }
+                    ?>
+
+                    <a href='like.php?type=user&id=<?php echo $userData['userID']; ?>' >
+                        <input id='postButton' style='margin-right: 10px; width: auto;' type='button' value='follow <?php echo $myFollowers ?>'>
+                    </a>
+            
+                </div>
 
                 <br>
-                <?php
-                    $myFollowers = "";
-                    if($userData['likes'] > 0)
-                    {
-                        $myFollowers = "(" . $userData['likes'] . ")";
-                    }
-                ?>
-
-                <a href='like.php?type=user&id=<?php echo $userData['userID']; ?>' >
-                    <input id='postButton' style='margin-right: 10px; width: auto;' type='button' value='follow <?php echo $myFollowers ?>'>
-                </a>
-        
-            </div>
-
-            <br>
-            <a href="index.php"><div id='menuButtons'>timeline</div></a>
-            <a href="profile.php?section=about&id=<?php echo $userData['userID']; ?>"><div id='menuButtons'>about</div></a>
-            <a href="index.php?section=following&id=<?php echo $userData['userID']; ?>"><div id='menuButtons'>following</div></a>
-            <a href="index.php?section=followers&id=<?php echo $userData['userID']; ?>"><div id='menuButtons'>followers</div></a>
-            <a href="index.php?section=settings"><div id='menuButtons'>settings</div></a>
-            <br>
-
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <a href="profile.php?section=media&id=<?php echo $userData['userID']; ?>"><div id='menuButtons'>media</div></a>
+                <a href="profile.php?section=followers&id=<?php echo $userData['userID']; ?>"><div id='menuButtons'>followers</div></a>
+                <br>
 
             </div>
-        
-            <div style='display: flex;'>
 
-                <!--mates area-->
-                <div style='min-height: 400px; flex:1;'>
-                
-                    <div id='matesBar'>
-                        
-                        mates<br>
+            <!--under the navigation area-->
+            
+            <?php
 
-                        <?php
-                                //var_dump($posts);
-                                if($mates)
-                                {
-                                    foreach ($mates as $mateROW){
+            $section = "default";
+            if(isset($_GET['section']))
+            {
+                $section = $_GET['section'];
+            }
 
-                                        
-                                        include("user.php");
-                                    }
-                                    
+            if($section == "default")
+            {
+                include("profileContentDefault.php");
 
-                                }
+            }elseif($section == "media")
+            {
+                include("profileContentMedia.php");
 
-                            ?>
+            }elseif($section == "followers")
+            {
+                include("profileContentFollowers.php");
 
-
-                    </div>
-                </div>
-
-                <!--posts area-->
-                <div style='min-height: 400px; flex:2.5; padding: 20px; padding-right: 0px;'>
-
-                    <div>
-
-                        <div style='border: solid thin white; padding: 10px; background-color: white;'>
-
-                            <form method="post" enctype="multipart/form-data">
-
-                                <textarea name='post' placeholder="what's going down on this fine day?"></textarea>
-                                <input type='file' name='file'>
-                                <input id='postButton' type='submit' value='post'>
-                                <br>
-
-                            </form>
-                        </div>
-                
-                        <!--posts-->
-
-                        <!--posts-->
-                        <div id='postBar'>
-
-                            <?php
-                                //var_dump($posts);
-                                if($posts)
-                                {
-                                    foreach ($posts as $ROW){
-
-                                        $user = new User();
-                                        $ROWuser = $user->getUser($ROW['userID']);
-                                        
-                                        include("post.php");
-                                    }
-                                    
-
-                                }
-
-                            ?>
+            }
 
 
-                        </div>
 
-                    </div>
+            ?>
 
-                </div>
-
-
-            </div>
-            </div>
+        </div>
 
 
 

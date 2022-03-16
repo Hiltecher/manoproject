@@ -1,4 +1,4 @@
-<div style="min-height: 400px;width:100%;background-color: white;text-align: center;">
+<div style="min-height: 400px;width:100%;background-color: white;">
 	<div style="padding: 20px;">
 	<?php
  
@@ -6,19 +6,19 @@
 		$postClass = new Post();
 		$userClass = new User();
 
-		$followers = $postClass->getLikes($userData['userid'],"user");
+		$followers = $postClass->getLikes($userData['userID'],"user");
 
 		if(is_array($followers)){
 
-			foreach ($followers as $follower) {
-				# code...
-				$FRIEND_ROW = $userClass->getUser($follower['userid']);
+			foreach ($followers as $follower)
+            {
+				$mateROW = $userClass->getUser($follower['userID']);
 				include("user.php");
 			}
 
 		}else{
 
-			echo "this user has no followers, how sad.";
+			echo "this user doesn't have any followers.";
 		}
 
 
