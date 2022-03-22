@@ -15,10 +15,18 @@ class Signup
             }
 
             if($key == "email")
-            {
+            {   
+                $query = "SELECT ID FROM users WHERE email = '$data[email]' LIMIT 1";
+                $DB = new Database();
+                $check = $DB->read($query);
+
                 if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/", $value)) { //checks email validity
 
-                    $this->error = $this->error . $key . " is an invalid email address.<br>";
+                    $this->error = $this->error . " invalid email address.<br>";
+                }elseif(is_array($check)){
+
+                    $this->error = $this->error . "another user is already using this email.<br>";
+
                 }
             }
 
@@ -26,12 +34,12 @@ class Signup
             {
                 if (is_numeric($value)) {
 
-                    $this->error = $this->error . $key . " first name cannot be a number.<br>";
+                    $this->error = $this->error . " first name cannot be a number.<br>";
                 }
 
                 if (strstr($value, " ")) {
 
-                    $this->error = $this->error . $key . " first name contains spaces.<br>";
+                    $this->error = $this->error . " first name contains spaces.<br>";
                 }
             }
 
@@ -39,12 +47,20 @@ class Signup
             {
                 if (is_numeric($value)) {
 
-                    $this->error = $this->error . $key . " last name cannot be a number.<br>";
+                    $this->error = $this->error . " last name cannot be a number.<br>";
                 }
 
                 if (strstr($value, " ")) {
 
-                    $this->error = $this->error . $key . " last name contains spaces.<br>";
+                    $this->error = $this->error . " last name contains spaces.<br>";
+                }
+            }
+
+            if($key == "password")
+            {
+                if ($data['password'] != $data['password2'])
+                {
+                    $this->error = $this->error . " passwords don't match.<br>";
                 }
             }
 
@@ -73,7 +89,6 @@ class Signup
         //these must be created!
 		$urlAddress = strtolower($firstName) . "." . strtolower($lastName);
         $userID = $this->createUserID();
-
 
         $query = "INSERT INTO users
         (userID, firstName, lastName, gender, email, password, urlAddress)

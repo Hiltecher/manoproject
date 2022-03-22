@@ -8,20 +8,17 @@
             new users<br>
 
             <?php
-                    //var_dump($posts);
-                    if($mates)
-                    {
-                        foreach ($mates as $mate){
+                if($mates)
+                {
+                    foreach ($mates as $mate){
 
-                            $mateROW = $user->getUser($mate['userID']);
-                            include("user.php");
-                        }
-                        
-
+                        $mateROW = $user->getUser($mate['userID']);
+                        include("user.php");
                     }
+                }
 
-                ?>
-
+            ?>
+        <br><br>
 
         </div>
     </div>

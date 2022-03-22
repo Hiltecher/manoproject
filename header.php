@@ -1,17 +1,17 @@
 <!--top bar-->
 <?php
 
-    $bannerPFP = "images/mvm.png"; //placeholder profile picture
+    $bannerPFP = "images/mvm.png"; //placeholder profile picture for males
 
     if(isset($USER))
     {
         if(file_exists($USER['pfp'])) //if a profile picture file exists in the database
         {
-            $imageClass = new Image(); //create a new image class
-            $bannerPFP = $imageClass->getThumbPFP($USER['pfp']);
+            $imageClass = new Image(); //initialise the image class
+            $bannerPFP = $imageClass->getThumbPFP($USER['pfp']); //use the getThumbPFP to call the user's profile picture
         }else{
 
-            if($USER['gender'] = 'female'){
+            if($USER['gender'] = 'female'){ //but if the user is female, the placeholder pfp is pink
 
                 $bannerPFP = "images/mvf.png";
 
@@ -30,7 +30,7 @@
 
         <form method='get' action='search.php'>
 
-            <a href="profile.php" style="color: white; text-decoration: none"> manoverse </a>
+            <a href="profile.php" style="color: white; text-decoration: none"> manoverse </a> <!--title for the main bar-->
 
             &nbsp &nbsp <input type='text' id='search_box' name='find' placeholder='explore the manoverse'>
 

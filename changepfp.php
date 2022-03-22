@@ -1,35 +1,45 @@
 <?php
 
-    include("classes/autoloader.php");
-
+    include("classes/autoloader.php"); //includes the classes from the autoloader
+    
     $login = new Login();
     $userData = $login->checkLogin($_SESSION['manoverseUserID']); //checks to see if a user is logged in or not
 
-    if($_SERVER['REQUEST_METHOD'] == "POST")
+    $USER = $userData;
+
+    if(isset($_GET['id']) && is_numeric($_GET['id'])) //If ID in URL is a set value and is numeric run the if loop to display profile data.
+    {
+        $profile = new Profile();
+        $profileData = $profile->getProfile($_GET['id']);
+
+        if(is_array($profileData))
+        {$userData = $profileData[0];}
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == "POST") //run this if statement if the server's request method is POST
     {
 
-        if(isset($_FILES['file']['name']) && $_FILES['file']['name'] != "")
+        if(isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") //run this if statement if filename is set and isn't empty
         {   
 
-            if($_FILES['file']['type'] == "image/jpeg")
+            if($_FILES['file']['type'] == "image/jpeg") //run this if statement if the image type is JPEG
             {
-                $maxSize = (1024 * 1024) * 5;
+                $maxSize = (1024 * 1024) * 5; //5mb is the max size
 
-                if($_FILES['file']['size'] < $maxSize)
+                if($_FILES['file']['size'] < $maxSize) //run this if statement if the filesize is under the max size of 5mb
                 {   
                     $folder = "uploads/" . $userData['userID'] . '/';
 
                     //A folder is created!
-                    if(!file_exists($folder))
+                    if(!file_exists($folder)) //if a folder doesn't exist with the above name, then create it
                     {
                         mkdir($folder, 7777, true);
                     }
 
-                    $image = new Image();
+                    $image = new Image(); //initialise image class
 
-                    $filename = $folder . $image->generateFilename(16) . ".jpg";
-                    move_uploaded_file($_FILES['file']['tmp_name'], $filename);
-
+                    $filename = $folder . $image->generateFilename(16) . ".jpg"; //create the filename
+                    move_uploaded_file($_FILES['file']['tmp_name'], $filename); //move the file into the new location
                     $change = "pfp";
 
                     //This checks the mode for change.
@@ -43,13 +53,13 @@
                         if(file_exists($userData['banner']))
                         {unlink($userData['banner']);}
 
-                        $image->cropImage($filename, $filename, 1366, 488);
+                        $image->cropImage($filename, $filename, 1366, 488); //set the banner resolution to 1366 x 488
                     }else{
 
                         if(file_exists($userData['pfp']))
                         {unlink($userData['pfp']);}
 
-                        $image->cropImage($filename, $filename, 800, 800);
+                        $image->cropImage($filename, $filename, 800, 800); //set the profile picture resolution to 800 x 800
                     }
                     
                     
@@ -126,63 +136,10 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> <!--these links are for external fonts and css. -->
+        <link rel="stylesheet" href="main.css">
 
-        <style type='text/css'>
-
-            #blue_bar{
-
-                height:50px;
-                background-color:#0077ff;
-                color:white;
-
-            }
-
-            #search_box{
-
-                width: 400px;
-                height:22px;
-                border-radius: 5px;
-                border:none;
-                padding: 4px;
-                font-size: 14px;
-                background-image: url(search.png);
-                background-repeat: no-repeat;
-                background-position: right;
-                
-            }
-
-            #postButton{
-
-                float: right;
-                background-color: #0077ff;
-                color: white;
-                border: none;
-                padding: 4px;
-                font-family: 'Titillium Web', sans-serif;
-                width: 50px;
-            }
-            
-            #postBar{
-
-                margin-top: 20px;
-                background-color: white;
-                padding: 10px;
-
-            }            
-
-            #post{
-
-                padding: 4px;
-                font-size: 13px;
-                display: flex;
-
-            }
-
-        </style>
-            
-        <body id='background' style="font-family: 'Titillium Web', sans-serif; background-color: #79b5fa; background-image:url(tris.png);">
- 
+        <body id='background'>
 
             <!--top bar-->
 
@@ -191,7 +148,6 @@
             <!--cover area-->
             
             <br>
-
             <div style='width: 800px; margin:auto; min-height:400px;'>
 
             
@@ -217,7 +173,7 @@
 
 
                 </div>
-             </div>
+            </div>
 
 
 

@@ -56,77 +56,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="main.css">
 
-    <style>
-
-
-        #bar{
-            height: 100px;
-            background-color: #0077ff;
-            color: #ffffff;
-            padding:4px;
-            border-radius: 5px;
-        }
-
-    #signup{
-        background-color: #3b97ff;
-        color: white;
-        width: 70px;
-        text-align: center;
-        padding: 6px;
-        border-radius: 4px;
-        margin-top: 3px;
-        margin-left: 3px;
-    }
-
-    #loginbox{
-        background-color: #0077ff;
-        color: white;
-        width:800px;
-        height: 550px;
-        margin:auto;
-        margin-top: 60px;
-        padding:10px;
-        padding-top: 35px;
-        text-align: center;
-        border-radius: 6px;
-        font-weight: bold;
-        font-size: 20px;
-    }
-
-    #text{
-        margin: 7px;
-        height: 40px;
-        width: 300px;
-        border-radius: 4px;
-        border: solid 1px #3b97ff;
-        padding: 4px;
-        font-size: 14px;
-    }
-
-    #button{
-        width: 300px;
-        height: 40px;
-        border-radius: 4px;
-        font-weight: bold;
-        border: none;
-        margin-top: 8px;
-        background-color: #3b97ff;
-        color: white;
-
-
-    }
-
-    </style>
-
-    <body style="font-family: 'Titillium Web', sans-serif; background-color: #79b5fa; background-image:url(tris.png);">
+    <body id='background'>
         <div id='bar'>
 
             <div style='font-size: 40px;'>manoverse</div>
             <a href='login.php'><div id='signup'>log in</div></a>
         </div>
 
-        <div id='loginbox'>
+        <div id='signupbox'>
             
             <div>join the manoverse!</div><br>
 
