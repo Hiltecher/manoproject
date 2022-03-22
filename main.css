@@ -194,3 +194,9 @@ textarea{
     background-image:url(images/tris.png);
 
 }
+
+@media screen and (max-width: 600px) {
+    #background {
+      background-color: rgb(0, 26, 112);
+    }
+  }

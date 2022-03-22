@@ -75,10 +75,8 @@ class Post
 
     public function getPosts($id) //function designed to get all posts from the posts database
     {
-
-        $limit = 10;
         
-        $query = "SELECT * FROM posts WHERE userID = '$id' ORDER BY ID DESC limit $limit";
+        $query = "SELECT * FROM posts WHERE userID = '$id' ORDER BY ID DESC limit 10";
 
 		$DB = new Database();
 		$result = $DB->read($query);
