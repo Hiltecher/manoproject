@@ -15,7 +15,6 @@ session_start();
         //echo "Post data is: " . $_POST['password'];
         $result = $login->evaluate($_POST);
 
-
         if($result != ""){
 
             echo "<div style='text-align:center; font-size: 16px; color: black;'>";
@@ -31,10 +30,7 @@ session_start();
         
         $email = $_POST['email'];
         $password = $_POST['password']; //this code is to avoid retyping and improve usability
-
-
     }
-
 ?>
 
 <html>
@@ -73,14 +69,4 @@ session_start();
         </div>
 
     </body>
-
-
-
-
-
-
-
-
-
-
 </html>

@@ -50,7 +50,7 @@
 
     //collect friends
     $user = new User();
-    $mates = $user->getMates($ID);
+    $mates = $user->getNewUsers($ID);
 
     $imageClass = new Image();
     

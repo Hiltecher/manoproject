@@ -4,7 +4,7 @@ class Login
 
 {
 
-    private $error = "";
+    private $error = ""; //initialise error
 
     public function evaluate($data)
     {
@@ -15,7 +15,7 @@ class Login
         $query = "SELECT * FROM users WHERE email = '$email' limit 1 ";
          
         //echo $query;
-        $db = new Database();
+        $db = new Database(); //initialise database class
         $result = $db->read($query);
 
         if($result)

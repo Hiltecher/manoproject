@@ -190,13 +190,15 @@ textarea{
 #background{
 
     font-family: 'Titillium Web', sans-serif;
-    background-color: rgb(0, 26, 112);
+    background-color: #79b5fa;
     background-image:url(images/tris.png);
 
 }
+@media screen and (max-width: 900px) {
 
-@media screen and (max-width: 600px) {
     #background {
-      background-color: rgb(0, 26, 112);
+      background-color: rgb(68, 112, 255);
+      background-image:url(images/trismobile.png);
     }
-  }
+
+}

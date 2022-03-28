@@ -5,8 +5,8 @@ Tried a fix: putting the unset function into a loop which checks to see if the u
 However this still didn't work
 Eventually realised there was no session start function and after adding this the code worked as intended.
 
-After creating the Post class an error presented itself saying the newly made class wasn't found in profile.php .
-The error was because the classes/post.php file was not included at the start of the the profile.php file. After writing code to include, the page worked as intended.
+After creating the Post class an error presented itself saying the newly made class wasn't found in profile.php.
+The error was because the classes/post.php file was not included at the start of the the classes/autoloader.php file. After writing code to include, the page worked as intended.
 
 Once a post was created, if you try to refresh the page and accept the Confirm Form Resubmission prompt, another post with the exact same caption will be uploaded to the database.
 This is a usability error which I needed to fix.

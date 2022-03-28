@@ -1,0 +1,23 @@
+CREATE TABLE `users` (
+`ID` int(19) NOT NULL AUTO_INCREMENT,
+`userID` bigint(19) NOT NULL,
+`firstName` varchar(30) NOT NULL,
+`lastName` varchar(30) NOT NULL,
+`gender` varchar(6) NOT NULL,
+`email` varchar(100) NOT NULL,
+`password` varchar(100) NOT NULL,
+`urlAddress` varchar(100) NOT NULL,
+`date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+`pfp` varchar(1000) NOT NULL,
+`banner` varchar(1000) NOT NULL,
+`likes` int(11) NOT NULL,
+PRIMARY KEY (`ID`),
+KEY `userID` (`userID`),
+KEY `username` (`firstName`),
+KEY `lastName` (`lastName`),
+KEY `email` (`email`),
+KEY `urlAddress` (`urlAddress`),
+KEY `gender` (`gender`),
+KEY `date` (`date`),
+KEY `likes` (`likes`)
+);

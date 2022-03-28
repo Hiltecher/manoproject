@@ -12,7 +12,7 @@
 
             foreach ($images as $imageRow)
             {
-                echo "<img src = '" . $imageClass->getThumbPost($imageRow['image']) . "' style='width:170px; border-radius: 10px'>";
+                echo "<img src = '" . $imageClass->getThumbPost($imageRow['image']) . "' style='width:170px; border-radius: 10px; margin: 10px'>";
 
             }
 
