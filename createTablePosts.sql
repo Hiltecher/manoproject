@@ -1,4 +1,4 @@
-CREATE TABLE `posts` (
+CREATE TABLE IF NOT EXISTS `posts` (
 `ID` bigint(19) NOT NULL AUTO_INCREMENT,
 `postID` bigint(19) NOT NULL,
 `userID` bigint(20) NOT NULL,

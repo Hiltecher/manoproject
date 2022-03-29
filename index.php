@@ -69,7 +69,7 @@
             
             <div>join the manoverse!</div><br>
 
-            <form method="post" action="">
+            <form method="post" action="index.php">
 
                 <input value='<?php echo $firstName ?>' name='firstName' type='text' id='text' placeholder='first name'><br>
                 <input value='<?php echo $lastName ?>' name='lastName' type='text' id='text' placeholder='last name'><br>

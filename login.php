@@ -50,7 +50,7 @@ session_start();
         <div id='bar'>
 
             <div style='font-size: 40px;'>manoverse</div>
-            <a href='signup.php'><div id='signup'>sign up</div></a>
+            <a href='index.php'><div id='signup'>sign up</div></a>
 
         </div>
 
